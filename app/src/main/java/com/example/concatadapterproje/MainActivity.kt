@@ -20,5 +20,31 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
 
+        /* Direkt attack edince duplicate oluyor.
+        val decorator = StickyHeaderItemDecorator(adapter)
+        decorator.attachToRecyclerView(binding.recyclerView)
+
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            var isStickyHeaderAttached = false
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val firstVisibleItemPosition = (binding.recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+
+                // Check -> Eğer decorator hali hazırda attach edildiyse
+
+                if (!isStickyHeaderAttached && firstVisibleItemPosition > 0){
+                    val decorator = StickyHeaderItemDecorator(adapter)
+                    decorator.attachToRecyclerView(binding.recyclerView)
+                    isStickyHeaderAttached = true
+                }else if(isStickyHeaderAttached && firstVisibleItemPosition == 0){
+                    binding.recyclerView.removeItemDecorationAt(0)
+                    isStickyHeaderAttached = false
+                }
+            }
+        })
+
+         */
+
     }
 }
